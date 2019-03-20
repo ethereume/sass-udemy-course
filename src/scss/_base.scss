@@ -2,6 +2,7 @@ $color-dark:#262626;
 $color-black:#000;
 $color-primary:#d3ab55;
 $color-secondary:#bbb;
+$color-white:#fff;
 $font-da: 'Dancing Script',cursive;
 $font-jo:'Josefin Sans',sans-serif;
 $font-nu:'Nunito',sans-serif;
@@ -12,10 +13,10 @@ $font-nu:'Nunito',sans-serif;
 	justify-content: center;
     align-items: center;
 }
-@mixin textStyle {
+@mixin textStyle($tansform:uppercase) {
 	font-weight:300;
 	letter-spacing:2px;
-	text-transform:uppercase;
+	text-transform:$tansform;
 }
 @mixin centering($top:15%,$first:-50%,$second:-50%) {
 	position:absolute;
@@ -23,7 +24,10 @@ $font-nu:'Nunito',sans-serif;
 	left:50%;
 	transform:translate($first,$second);
 }
-
+%fullSpace {
+	width:100%;
+	height:100%;	
+}
 
 * {
 	margin:0;
