@@ -24,6 +24,12 @@ $font-nu:'Nunito',sans-serif;
 	left:50%;
 	transform:translate($first,$second);
 }
+@mixin navabarStaling($color:$color-dark){
+	width: 50vw;
+	position: fixed;
+	height: 100vh;
+	background-color: $color;
+}
 %fullSpace {
 	width:100%;
 	height:100%;	
