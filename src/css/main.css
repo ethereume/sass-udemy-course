@@ -82,6 +82,7 @@ html {
   .header .dropdown {
     transition: all .3s;
     position: absolute;
+    z-index: 100;
     top: 3rem;
     right: -2.8rem;
     width: 10rem;
@@ -119,3 +120,61 @@ html {
       border-right: 15px solid transparent;
       border-left: 15px solid transparent;
       border-bottom: 15px solid #e6e2e4; }
+
+.slideshow {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  position: relative;
+  width: 100%;
+  height: 80vh; }
+  .slideshow-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    visibility: hidden;
+    animation: anim 20s ease-in-out infinite; }
+    .slideshow-slide img {
+      width: inherit;
+      height: inherit;
+      object-fit: cover; }
+  .slideshow-slide:nth-child(1) {
+    animation-delay: 0s; }
+  .slideshow-slide:nth-child(2) {
+    animation-delay: 4s; }
+  .slideshow-slide:nth-child(3) {
+    animation-delay: 8s; }
+  .slideshow-slide:nth-child(4) {
+    animation-delay: 12s; }
+  .slideshow-slide:nth-child(5) {
+    animation-delay: 16s; }
+  .slideshow-content {
+    background-color: rgba(255, 255, 238, 0.9);
+    position: absolute;
+    bottom: 6rem;
+    left: 6rem;
+    padding: 40px 15px; }
+    .slideshow-content h2 {
+      font-size: 3rem;
+      color: #333; }
+    .slideshow-content p {
+      font-size: 1.6rem; }
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    visibility: hidden; }
+  2% {
+    opacity: 1;
+    visibility: visible; }
+  18% {
+    opacity: 1;
+    visibility: visible; }
+  20% {
+    opacity: 0;
+    visibility: hidden; }
+  100% {
+    opacity: 0;
+    visibility: hidden; } }
