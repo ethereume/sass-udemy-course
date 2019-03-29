@@ -19,3 +19,21 @@ $fontSizes: (
 @function getFontSize($size) {
 	@return map-get($fontSizes,$size);
 }
+
+@mixin aim($number,$delay) {
+	&-slide:nth-child(#{$number}){
+		animation-delay: $delay#{s};
+	}
+}
+
+@mixin generateAim($number){
+	@for $i from 1 through $number {
+		@include aim($i,$i*4-4);
+	}
+}
+@mixin flexPosition($justCont:center,$alignIte:center){
+	display: flex;
+	justify-content: $justCont;
+	align-items: $alignIte;
+
+}

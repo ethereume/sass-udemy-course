@@ -118,21 +118,9 @@ html {
 			object-fit: cover;
 		}
 	}
-	&-slide:nth-child(1){
-		animation-delay: 0s;
-	}
-	&-slide:nth-child(2){
-		animation-delay: 4s;
-	}
-	&-slide:nth-child(3){
-		animation-delay: 8s;
-	}
-	&-slide:nth-child(4){
-		animation-delay: 12s;
-	}
-	&-slide:nth-child(5){
-		animation-delay: 16s;
-	}
+
+	@include generateAim(5);
+
 	&-content {
 		background-color: rgba(color(secondary),.9);
 		position: absolute;
@@ -149,6 +137,135 @@ html {
 		}
 	}	
 }
+.products {
+	grid-column: 1 / -1;
+	grid-row: 3/4;
+
+	&-heading {
+		margin: 5rem 0;
+
+		&-text {
+			text-align: center;
+			font-size: getFontSize(lg)+2rem;
+			font-weight: 300;
+			color: color(primary);
+		}
+	}
+	&-wrapper {
+		@include flexPosition;
+	}
+}
+.product {
+	position: relative;
+	&-img {
+		width: 100%;
+		transition: opacity .5s;
+	}
+	&:hover &-description {
+		opacity: 1;
+		visibility: visible;
+	}
+	&:hover &-img {
+		opacity: .5;
+	}
+	&-description {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background-color: transparentize(color(secondary), 0.4);
+		padding: 2rem;
+		border: .1rem solid color(primary);
+		border-radius: .5rem;
+		color: color(primary);
+		text-align: center;
+		opacity: 0;
+		visibility: none;
+		transition: all .5s;
+		&-heading {
+			font-size: getFontSize(xl);
+		}
+		&-price {
+			font-size: getFontSize(lg);
+			font-weight: 300;
+			margin: 1rem 0;
+
+			span {
+				font-weight: 600;
+			}
+		}
+		&-btn {
+			font-size: getFontSize(xs);
+			text-decoration: none;
+			color: color(quaternary);
+			display: block;
+			padding: .5rem 1rem;
+			border: .1rem solid color(quaternary);
+			border-color: lighten(color(quaternary),20%);
+		}
+	}
+}
+.products-btn {
+	@include flexPosition;
+	.btn {
+		width: 16rem;
+		height: 4rem;
+		text-decoration: none;
+		position: relative;
+		@include flexPosition(space-around);
+		&:hover .btn-bg{
+			width:18rem;
+		}
+		&:hover .btn-text {
+			color: color(secondary);
+		}
+		&:hover .arrow {
+			transform: translateX(1rem);
+		}
+		&:hover .arrow-line-1{
+			width: 2rem;
+		}
+		&-bg {
+			width: 4rem;
+			height: 4rem;
+			background-color: color(primary);
+			border-radius: 5rem;
+			position: absolute;
+			left: 0;
+			transition: width .2s;
+		}
+		&-text {
+			font-size: getFontSize(xs);
+			text-transform: uppercase;
+			color: color(primary);
+			z-index: 20;
+		}
+		.arrow {
+			@include flexPosition;
+			transition: transform .2s;
+			&-line {
+				height: .2rem;
+				background-color: color(secondary);
+				position: absolute;
+				transform-origin: right;
+			}
+			&-line-1 {
+				width: 0rem;
+				transform: translateX(-0.7rem);
+				transition: width .2s;
+			}
+			&-line-2 {
+				width: 1rem;
+				transform: rotate(45deg);
+			}
+			&-line-3 {
+				width: 1rem;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
 @keyframes anim {
 	0%{
 		opacity: 0;
