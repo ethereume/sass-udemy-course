@@ -17,7 +17,7 @@ html {
 	grid-column: 1/-1;
 	grid-row:1/2;
 	display: grid;
-	grid-template-columns: 1fr repeat(7,minmax(min-content,16rem)) 1fr;
+	grid-template-columns: minmax(min-content,1fr) repeat(7,minmax(min-content,16rem)) minmax(min-content,1fr);
 	grid-template-rows: repeat(3,min-content);
 	grid-gap: 2rem;
 
@@ -31,7 +31,7 @@ html {
 		}
 	}
 	.heading {
-		grid-column: 4 / 7;
+		grid-column: 1 / -1;
 		grid-row: 2/3;
 		text-align: center;
 		&-text {
@@ -42,14 +42,23 @@ html {
 		}	
 	}
 	.first-nav {
-		grid-column: 7 / -1;
+		grid-column: 6 / -1;
 		grid-row:1/2;
 		@include navigation;
+		@include response(xl) {
+			grid-column: 5 /-1;
+		}
+		@include response(lg) {
+			grid-column: 3 /-1;
+		}
 	}
 	.second-nav {
 		grid-column: 3/8;
 		grid-row: 3 / 3;
 		@include navigation;
+		@include response(lg) {
+			grid-column: 1 /-1;
+		}
 	}
 	.dropdown-li {
 		position: relative;
@@ -103,6 +112,10 @@ html {
 	position: relative;
 	width: 100%;
 	height:80vh;
+	@include response(xl) {
+		height: 70vh;
+	}
+
 	&-slide {
 		position: absolute;
 		top: 0;
